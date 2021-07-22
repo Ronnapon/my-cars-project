@@ -2,11 +2,13 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using my_cars.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,9 +18,14 @@ namespace my_cars
 {
     public class Startup
     {
+        // Config DB Context with SQL
+        public string ConnectionString { get; set; }
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            // Config DB Context with SQL
+            ConnectionString = Configuration["ConnectionStrings:DefaultConnectionString"];
         }
 
         public IConfiguration Configuration { get; }
@@ -28,6 +35,11 @@ namespace my_cars
         {
 
             services.AddControllers();
+            
+            // Config DB Context with SQL
+            services.AddDbContext<AppDbContext>(option => option.UseSqlServer(ConnectionString));
+
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "my_cars", Version = "v1" });
