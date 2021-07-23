@@ -25,13 +25,7 @@ namespace my_cars.Data.Models
 
         // Navigation Properties
         public int AppointmentId { get; set; }
-        public Appointment Appointment { get; set; }
-
-        public int? EmployeeId { get; set; }
-        public Employee Employee { get; set; }
-
+        public int EmployeeId { get; set; }
         public int ReasonId { get; set; }
-        public Reason Reason { get; set; }
-
     }
 }

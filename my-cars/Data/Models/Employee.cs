@@ -22,10 +22,6 @@ namespace my_cars.Data.Models
 
         // Navigation Properties
         public int TitleId { get; set; }
-        public Title title { get; set; }
-
-
         public int GarageId { get; set; }
-        public Garage garage {get;set;}
     }
 }

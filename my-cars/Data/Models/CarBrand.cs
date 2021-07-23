@@ -19,8 +19,5 @@ namespace my_cars.Data.Models
 
         // Navigation Properties
         public int AdminId { get; set; }
-        public Admin admin {get;set;}
-
-        public List<CarModel> carModels { get; set; }
     }
 }

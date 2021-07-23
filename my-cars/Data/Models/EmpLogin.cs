@@ -21,6 +21,5 @@ namespace my_cars.Data.Models
 
         // Navigation Properties
         public int EmployeeId { get; set; }
-        public Employee employee { get; set; }
     }
 }

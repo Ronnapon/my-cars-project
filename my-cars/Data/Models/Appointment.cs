@@ -18,12 +18,7 @@ namespace my_cars.Data.Models
 
         //Navigation Properties
         public int CarId { get; set; }
-        public Car car { get; set; }
-
-        public int? CustomerId { get; set; }
-        public Customer customer { get; set; }
-
+        public int CustomerId { get; set; }
         public int GarageId { get; set; }
-        public Garage garage { get; set; }
     }
 }

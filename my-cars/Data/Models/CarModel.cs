@@ -21,10 +21,7 @@ namespace my_cars.Data.Models
         public string Status { get; set; }
 
         // Navigation Properties
-        public int? CarBrandId { get; set; }
-        public CarBrand carBrand { get; set; }
-
+        public int CarBrandId { get; set; }
         public int AdminId { get; set; }
-        public Admin admin { get; set; }
     }
 }

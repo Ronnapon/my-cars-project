@@ -140,7 +140,7 @@ namespace my_cars.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("date");
 
-                    b.Property<int?>("CustomerId")
+                    b.Property<int>("CustomerId")
                         .HasMaxLength(20)
                         .HasColumnType("int");
 
@@ -209,7 +209,7 @@ namespace my_cars.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("EmployeeId")
+                    b.Property<int>("EmployeeId")
                         .HasMaxLength(20)
                         .HasColumnType("int");
 
@@ -264,7 +264,7 @@ namespace my_cars.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("int");
 
-                    b.Property<int?>("CarModelId")
+                    b.Property<int>("CarModelId")
                         .HasMaxLength(20)
                         .HasColumnType("int");
 
@@ -272,7 +272,7 @@ namespace my_cars.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("date");
 
-                    b.Property<int?>("CustomerId")
+                    b.Property<int>("CustomerId")
                         .HasMaxLength(20)
                         .HasColumnType("int");
 
@@ -365,7 +365,7 @@ namespace my_cars.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("varchar(20)");
 
-                    b.Property<int?>("CarBrandId")
+                    b.Property<int>("CarBrandId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedDate")
@@ -759,186 +759,6 @@ namespace my_cars.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("titles");
-                });
-
-            modelBuilder.Entity("my_cars.Data.Models.Admin", b =>
-                {
-                    b.HasOne("my_cars.Data.Models.Title", "title")
-                        .WithMany()
-                        .HasForeignKey("TitleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("title");
-                });
-
-            modelBuilder.Entity("my_cars.Data.Models.AdminLogin", b =>
-                {
-                    b.HasOne("my_cars.Data.Models.Admin", "admin")
-                        .WithMany()
-                        .HasForeignKey("AdminId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("admin");
-                });
-
-            modelBuilder.Entity("my_cars.Data.Models.Appointment", b =>
-                {
-                    b.HasOne("my_cars.Data.Models.Car", "car")
-                        .WithMany()
-                        .HasForeignKey("CarId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("my_cars.Data.Models.Customer", "customer")
-                        .WithMany()
-                        .HasForeignKey("CustomerId");
-
-                    b.HasOne("my_cars.Data.Models.Garage", "garage")
-                        .WithMany()
-                        .HasForeignKey("GarageId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("car");
-
-                    b.Navigation("customer");
-
-                    b.Navigation("garage");
-                });
-
-            modelBuilder.Entity("my_cars.Data.Models.AppointmentDetail", b =>
-                {
-                    b.HasOne("my_cars.Data.Models.Appointment", "Appointment")
-                        .WithMany()
-                        .HasForeignKey("AppointmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("my_cars.Data.Models.Employee", "Employee")
-                        .WithMany()
-                        .HasForeignKey("EmployeeId");
-
-                    b.HasOne("my_cars.Data.Models.Reason", "Reason")
-                        .WithMany()
-                        .HasForeignKey("ReasonId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Appointment");
-
-                    b.Navigation("Employee");
-
-                    b.Navigation("Reason");
-                });
-
-            modelBuilder.Entity("my_cars.Data.Models.Car", b =>
-                {
-                    b.HasOne("my_cars.Data.Models.CarBrand", "CarBrand")
-                        .WithMany()
-                        .HasForeignKey("CarBrandId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("my_cars.Data.Models.CarModel", "CarModel")
-                        .WithMany()
-                        .HasForeignKey("CarModelId");
-
-                    b.HasOne("my_cars.Data.Models.Customer", "Customer")
-                        .WithMany()
-                        .HasForeignKey("CustomerId");
-
-                    b.Navigation("CarBrand");
-
-                    b.Navigation("CarModel");
-
-                    b.Navigation("Customer");
-                });
-
-            modelBuilder.Entity("my_cars.Data.Models.CarBrand", b =>
-                {
-                    b.HasOne("my_cars.Data.Models.Admin", "admin")
-                        .WithMany()
-                        .HasForeignKey("AdminId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("admin");
-                });
-
-            modelBuilder.Entity("my_cars.Data.Models.CarModel", b =>
-                {
-                    b.HasOne("my_cars.Data.Models.Admin", "admin")
-                        .WithMany()
-                        .HasForeignKey("AdminId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("my_cars.Data.Models.CarBrand", "carBrand")
-                        .WithMany("carModels")
-                        .HasForeignKey("CarBrandId");
-
-                    b.Navigation("admin");
-
-                    b.Navigation("carBrand");
-                });
-
-            modelBuilder.Entity("my_cars.Data.Models.CustLogin", b =>
-                {
-                    b.HasOne("my_cars.Data.Models.Customer", "customer")
-                        .WithMany()
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("customer");
-                });
-
-            modelBuilder.Entity("my_cars.Data.Models.Customer", b =>
-                {
-                    b.HasOne("my_cars.Data.Models.Title", "title")
-                        .WithMany()
-                        .HasForeignKey("TitleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("title");
-                });
-
-            modelBuilder.Entity("my_cars.Data.Models.EmpLogin", b =>
-                {
-                    b.HasOne("my_cars.Data.Models.Employee", "employee")
-                        .WithMany()
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("employee");
-                });
-
-            modelBuilder.Entity("my_cars.Data.Models.Employee", b =>
-                {
-                    b.HasOne("my_cars.Data.Models.Garage", "garage")
-                        .WithMany()
-                        .HasForeignKey("GarageId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("my_cars.Data.Models.Title", "title")
-                        .WithMany()
-                        .HasForeignKey("TitleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("garage");
-
-                    b.Navigation("title");
-                });
-
-            modelBuilder.Entity("my_cars.Data.Models.CarBrand", b =>
-                {
-                    b.Navigation("carModels");
                 });
 #pragma warning restore 612, 618
         }

@@ -72,10 +72,15 @@ namespace my_cars.EntityConfigurations
                 .HasColumnType("varchar")
                 .HasMaxLength(20);
 
+
+            // Nevigator Properties
             modelBuilder
                 .Property(t => t.AppointmentId)
                 .HasColumnType("int")
                 .HasMaxLength(20);
+
+            modelBuilder
+              .HasIndex(t => t.AppointmentId);
 
             modelBuilder
                 .Property(t => t.EmployeeId)
@@ -83,9 +88,15 @@ namespace my_cars.EntityConfigurations
                 .HasMaxLength(20);
 
             modelBuilder
+              .HasIndex(t => t.EmployeeId);
+
+            modelBuilder
                 .Property(t => t.ReasonId)
                 .HasColumnType("int")
                 .HasMaxLength(20);
+
+            modelBuilder
+              .HasIndex(t => t.ReasonId);
         }
     }
 }

@@ -19,12 +19,7 @@ namespace my_cars.Data.Models
 
         // Navigation Properties
         public int CarBrandId { get; set; }
-        public CarBrand CarBrand { get; set; }
-
-        public int? CarModelId { get; set; }
-        public CarModel CarModel { get;set;}
-
-        public int? CustomerId { get; set; }
-        public Customer Customer { get; set; }
+        public int CarModelId { get; set; }
+        public int CustomerId { get; set; }
     }
 }

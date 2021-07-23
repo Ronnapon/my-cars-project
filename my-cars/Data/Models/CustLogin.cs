@@ -20,6 +20,5 @@ namespace my_cars.Data.Models
 
         // Navigation Properties
         public int CustomerId { get; set; }
-        public Customer customer { get; set; }
     }
 }

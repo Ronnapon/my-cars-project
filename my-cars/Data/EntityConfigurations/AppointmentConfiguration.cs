@@ -37,10 +37,15 @@ namespace my_cars.EntityConfigurations
                 .HasColumnType("varchar")
                 .HasMaxLength(20);
 
+
+            // Nevigator Properties
             modelBuilder
                 .Property(t => t.CarId)
                 .HasColumnType("int")
                 .HasMaxLength(20);
+
+            modelBuilder
+              .HasIndex(t => t.CarId);
 
             modelBuilder
                 .Property(t => t.CustomerId)
@@ -48,9 +53,15 @@ namespace my_cars.EntityConfigurations
                 .HasMaxLength(20);
 
             modelBuilder
+              .HasIndex(t => t.CustomerId);
+
+            modelBuilder
                 .Property(t => t.GarageId)
                 .HasColumnType("int")
                 .HasMaxLength(20);
+
+            modelBuilder
+              .HasIndex(t => t.GarageId);
         }
     }
 }

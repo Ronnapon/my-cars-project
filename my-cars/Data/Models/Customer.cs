@@ -23,6 +23,5 @@ namespace my_cars.Data.Models
 
         // Navigation Properties
         public int TitleId { get; set; }
-        public Title title { get; set; }
     }
 }

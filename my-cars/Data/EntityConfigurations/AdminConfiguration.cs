@@ -68,10 +68,16 @@ namespace my_cars.EntityConfigurations
                 .HasColumnType("varchar")
                 .HasMaxLength(20);
 
+
+            // Nevigator Properties
             modelBuilder
                .Property(t => t.TitleId)
                .HasColumnType("int")
                .HasMaxLength(20);
+            
+            modelBuilder
+               .HasIndex(b => b.TitleId);
+
         }
     } 
 }
