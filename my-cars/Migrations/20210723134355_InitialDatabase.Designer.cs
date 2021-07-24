@@ -10,7 +10,7 @@ using my_cars.Data;
 namespace my_cars.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210723130318_InitialDatabase")]
+    [Migration("20210723134355_InitialDatabase")]
     partial class InitialDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

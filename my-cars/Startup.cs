@@ -9,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using my_cars.Data;
+using my_cars.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,8 +25,6 @@ namespace my_cars
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            // Config DB Context with SQL
-            ConnectionString = Configuration["ConnectionStrings:DefaultConnectionString"];
         }
 
         public IConfiguration Configuration { get; }
@@ -33,12 +32,8 @@ namespace my_cars
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
-            services.AddControllers();
-            
-            // Config DB Context with SQL
-            services.AddDbContext<AppDbContext>(option => option.UseSqlServer(ConnectionString));
-
+            services.ConfigureSqlContext(Configuration); 
+            services.AddControllers();          
 
             services.AddSwaggerGen(c =>
             {
